@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nosso Tesouro do Amor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      max-width: 500px;
+      width: 100%;
+    }
+    h1, h2 {
+      margin-bottom: 20px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 80%;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #ee9ca7;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #d97a84;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="app">
+    <div id="intro">
+      <h1>Bem-vinda à nossa Caça ao Tesouro do Amor!</h1>
+      <p>Prepare-se para uma aventura feita com o coração.</p>
+      <button onclick="startGame()">Começar</button>
+    </div>
+
+    <div id="step1" class="hidden">
+      <h2>Pista 1</h2>
+      <p>Qual é a data que eu vim morar com você?<br><strong>(Apenas números, no formato: DDMMYYYY)</strong></p>
+      <input type="text" id="answer1" placeholder="Ex: 10082022" />
+      <button onclick="checkAnswer(1)">Confirmar</button>
+    </div>
+
+    <div id="step2" class="hidden">
+      <h2>Pista 2</h2>
+      <p>Se eu pudesse, o que eu queria te dar?<br><strong>Dica: Você ama isso e queria muito</strong></p>
+      <input type="text" id="answer2" placeholder="Digite aqui..." />
+      <button onclick="checkAnswer(2)">Confirmar</button>
+    </div>
+
+    <div id="step3" class="hidden">
+      <h2>Pista 3</h2>
+      <p>Qual foi a melhor coisa da minha vida?<br><strong>Dica: você olha no espelho e vê a resposta</strong></p>
+      <input type="text" id="answer3" placeholder="Digite aqui..." />
+      <button onclick="checkAnswer(3)">Confirmar</button>
+    </div>
+
+    <div id="final" class="hidden">
+      <h1>Você chegou até aqui… e sabe por quê?</h1>
+      <p>Porque o nosso amor é assim: cheio de detalhes, lembranças e significados. Cada resposta sua mostra o quanto nossa história é linda e real.  
+      Você é a melhor parte da minha vida, e eu faria tudo de novo, só pra viver cada momento ao seu lado.  
+      Obrigado por existir, por me amar e por ser minha.  
+      Te amo pra sempre!</p>
+      <p><strong>Agora pode fechar esse site com um sorriso no rosto… porque a surpresa verdadeira é você na minha vida.</strong></p>
+    </div>
+  </div>
+
+  <script>
+    const respostas = [
+      "10082022",
+      "penteadeira",
+      "me conhecer"
+    ];
+
+    function startGame() {
+      document.getElementById("intro").classList.add("hidden");
+      document.getElementById("step1").classList.remove("hidden");
+    }
+
+    function checkAnswer(step) {
+      const userInput = document.getElementById("answer" + step).value.trim().toLowerCase();
+      if (userInput === respostas[step - 1]) {
+        document.getElementById("step" + step).classList.add("hidden");
+        if (step < 3) {
+          document.getElementById("step" + (step + 1)).classList.remove("hidden");
+        } else {
+          document.getElementById("final").classList.remove("hidden");
+        }
+      } else {
+        alert("Hmm… tenta lembrar com carinho, você consegue!");
+      }
+    }
+  </script>
+</body>
+</html>
